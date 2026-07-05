@@ -1,0 +1,368 @@
+---
+import MystiriarumPageLayout from "../../../layouts/MystiriarumPageLayout.astro";
+
+const regionTerms = [
+  {
+    name: "セントネリア",
+    description:
+      "世界の中央に位置し、文明、学術、交易、工業が集まる中心地域。",
+  },
+  {
+    name: "アレイザール",
+    description:
+      "砂漠が広がり、資源と交易路が生活を左右する乾燥地域。",
+  },
+  {
+    name: "ホワイトノクス",
+    description:
+      "雪と氷に覆われ、防衛と保存の技術が発達した極寒地域。",
+  },
+  {
+    name: "シルヴァリス",
+    description:
+      "巨大樹と森林が広がり、自然資源と薬学研究が盛んな地域。",
+  },
+  {
+    name: "グラナイトレンジ",
+    description:
+      "険しい山々と要衝が続き、砦や関所が発達した山岳地域。",
+  },
+];
+
+const nationTerms = [
+  {
+    name: "グランディオス",
+    description:
+      "世界最大規模の首都国。魔法学校、騎士団、ギルド本部が集まる。",
+  },
+  {
+    name: "リッジフォート",
+    description:
+      "魔導具や機械製造、魔法を設備へ組み込む技術に優れた工房都市。",
+  },
+  {
+    name: "メリディア・ポート",
+    description:
+      "物流魔法と港湾結界が発達した、中立的な交易都市国家。",
+  },
+  {
+    name: "ソルカリフ",
+    description:
+      "耐砂結界と地下通路を持つ砂漠国家。鉱物や遺物を産出する。",
+  },
+  {
+    name: "フロストヴァリア",
+    description:
+      "極寒の地に築かれ、防衛と籠城に特化した城塞国家。",
+  },
+  {
+    name: "ヴェルデリア",
+    description:
+      "巨大樹を中心に広がり、自然素材、薬学、魔法研究を得意とする森林国家。",
+  },
+  {
+    name: "ヴァルガルド",
+    description:
+      "山岳地形、砦、関所を利用した防衛体制を持つ国家。",
+  },
+];
+
+const ruinTerms = [
+  {
+    name: "ヴェルデグレイブ",
+    description:
+      "シルヴァリス地方の奥地で発見された古代都市遺跡の現代における通称。",
+  },
+  {
+    name: "カーディナリス",
+    description:
+      "ヴェルデグレイブの正式名称。旧文明時代の首都だった都市。",
+  },
+];
+
+const magicTerms = [
+  {
+    name: "魔力",
+    description:
+      "現代人類が持つ魔法の燃料。枯渇しても死には直結しないが、強い疲労を引き起こす。",
+  },
+  {
+    name: "生命力",
+    description:
+      "生命活動そのものを支える力。古代魔法では魔法の燃料として消費されていた。",
+  },
+  {
+    name: "現代魔法",
+    description:
+      "魔力と詠唱を用いる、安全性と持続性を重視した現代の魔法体系。",
+  },
+  {
+    name: "古代魔法",
+    description:
+      "生命力を消費し、無詠唱と高威力を特徴とする旧人類の魔法体系。",
+  },
+  {
+    name: "魔法陣",
+    description:
+      "召喚や生活インフラなどに用いられる術式。魔力を消費または充填して稼働する。",
+  },
+  {
+    name: "詠唱",
+    description:
+      "魔法を成立させるための言葉と手順。術者自身による意味の理解が必要。",
+  },
+  {
+    name: "短縮詠唱",
+    description:
+      "習熟によって、通常より短い詠唱で魔法を発動する技術。",
+  },
+  {
+    name: "無詠唱",
+    description:
+      "言葉による詠唱を省略する技術。通常より威力や精度が低下する場合がある。",
+  },
+];
+
+const organizationTerms = [
+  {
+    name: "騎士団",
+    description:
+      "国内の治安維持、防衛、魔法犯罪への対処を担当する組織。",
+  },
+  {
+    name: "ギルド",
+    description:
+      "魔物討伐、護送、未開地調査など、都市の外側にある危険へ対処する組織。",
+  },
+  {
+    name: "魔物",
+    description:
+      "世界各地に出現し、人間と同様に魔法を扱う日常的な脅威。",
+  },
+  {
+    name: "外敵",
+    description:
+      "世界の外側から侵入し、旧人類の滅亡にも関わった根源的な脅威。",
+  },
+];
+
+const secretTerms = [
+  {
+    name: "世界",
+    description:
+      "人格を持たず、文明を観測し、情報を保存し続けるシステム。",
+  },
+  {
+    name: "星のログ",
+    description:
+      "世界が文明情報を星へ保存している不可視の記録。人類はその存在を認識できない。",
+  },
+  {
+    name: "解析に長けた外敵",
+    description:
+      "古代魔法を学習し、旧人類との戦いで大きな脅威となった外敵。",
+  },
+  {
+    name: "魔力に適応した外敵",
+    description:
+      "将来現れる可能性がある仮説上の脅威。現代の魔力を運用できる外敵を指す。",
+  },
+  {
+    name: "天体魔法",
+    description:
+      "星、暦、天体の運行に関係する魔法。星のログによる支援を受けている可能性がある。",
+  },
+];
+---
+
+<MystiriarumPageLayout
+  pageTitle="用語集"
+  pageLabel="GLOSSARY"
+  description="ミスティリアルム・エレディアに登場する地域、国家、魔法、組織、世界の真相に関する用語集です。"
+  lead="地域、国家、魔法、組織など、世界を形づくる言葉を項目別に整理。"
+  heroMark="詞"
+  currentPath="/world/mystiriarum-eredia/glossary"
+  previous={{
+    label: "魔法",
+    href: "/world/mystiriarum-eredia/magic",
+  }}
+  next={{
+    label: "設定資料一覧",
+    href: "/world/mystiriarum-eredia",
+  }}
+>
+  <section class="section" id="page-content">
+    <div class="section-heading">
+      <p>WORLD GLOSSARY</p>
+      <h2>世界を形づくる言葉</h2>
+    </div>
+
+    <article class="intro-card">
+      <p class="small-label">ABOUT GLOSSARY</p>
+
+      <h3>設定資料に登場する固有名詞</h3>
+
+      <p>
+        地方や国家、魔法、組織など、
+        ミスティリアルム・エレディアに登場する用語を
+        分類してまとめています。
+      </p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>REGIONS</p>
+      <h2>地域名</h2>
+    </div>
+
+    <article class="glossary-group">
+      <p class="small-label">REGION NAMES</p>
+      <h3>五つの地方</h3>
+
+      <dl class="glossary-list">
+        {
+          regionTerms.map((term) => (
+            <div class="glossary-item">
+              <dt>{term.name}</dt>
+              <dd>{term.description}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>NATIONS & CITIES</p>
+      <h2>国家・都市名</h2>
+    </div>
+
+    <article class="glossary-group">
+      <p class="small-label">NATION NAMES</p>
+      <h3>各地方の国と都市</h3>
+
+      <dl class="glossary-list">
+        {
+          nationTerms.map((term) => (
+            <div class="glossary-item">
+              <dt>{term.name}</dt>
+              <dd>{term.description}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>ANCIENT RUINS</p>
+      <h2>遺跡名</h2>
+    </div>
+
+    <article class="glossary-group">
+      <p class="small-label">RUIN NAMES</p>
+      <h3>古代文明の遺跡</h3>
+
+      <dl class="glossary-list">
+        {
+          ruinTerms.map((term) => (
+            <div class="glossary-item">
+              <dt>{term.name}</dt>
+              <dd>{term.description}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>MAGIC TERMS</p>
+      <h2>魔法関連用語</h2>
+    </div>
+
+    <article class="glossary-group">
+      <p class="small-label">MAGIC GLOSSARY</p>
+      <h3>魔力・詠唱・術式</h3>
+
+      <dl class="glossary-list">
+        {
+          magicTerms.map((term) => (
+            <div class="glossary-item">
+              <dt>{term.name}</dt>
+              <dd>{term.description}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>ORGANIZATIONS & THREATS</p>
+      <h2>組織・脅威関連用語</h2>
+    </div>
+
+    <article class="glossary-group">
+      <p class="small-label">WORLD GLOSSARY</p>
+      <h3>社会と危険を表す言葉</h3>
+
+      <dl class="glossary-list">
+        {
+          organizationTerms.map((term) => (
+            <div class="glossary-item">
+              <dt>{term.name}</dt>
+              <dd>{term.description}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>SECRET TERMS</p>
+      <h2>世界の真相に関する用語</h2>
+    </div>
+
+    <div class="spoiler-warning">
+      <p class="small-label">SPOILER WARNING</p>
+      <h3>ここから先はネタバレを含みます</h3>
+
+      <p>
+        世界の観測機構、星のログ、外敵の性質に関する用語です。
+      </p>
+    </div>
+
+    <details class="spoiler-details">
+      <summary>
+        <span>ネタバレ用語を開く</span>
+        <span class="summary-icon" aria-hidden="true">＋</span>
+      </summary>
+
+      <div class="spoiler-content">
+        <article class="secret-card">
+          <p class="card-label">SECRET GLOSSARY</p>
+          <h3>世界の裏側に存在するもの</h3>
+
+          <dl class="glossary-list">
+            {
+              secretTerms.map((term) => (
+                <div class="glossary-item">
+                  <dt>{term.name}</dt>
+                  <dd>{term.description}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </article>
+      </div>
+    </details>
+  </section>
+</MystiriarumPageLayout>

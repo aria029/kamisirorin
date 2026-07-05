@@ -1,0 +1,146 @@
+---
+import MystiriarumPageLayout from "../../../layouts/MystiriarumPageLayout.astro";
+
+const lifeSections = [
+  {
+    category: "MAGIC INFRASTRUCTURE",
+    title: "魔法陣による生活設備",
+    paragraphs: [
+      "生活設備には、小さな魔法陣が広く使われています。",
+      "水や湯を供給する設備、室内の明かり、浄水、清掃、温度調整など、日常生活は多くの術式によって支えられています。",
+      "設備には、使用者の魔力を消費する方式と、事前に充填された魔力を使う方式があります。",
+    ],
+  },
+  {
+    category: "MEDICAL & TRANSPORT",
+    title: "医療と交通",
+    paragraphs: [
+      "医療は治癒魔法を扱うヒーラーを中心に成り立ち、各地には病院に相当する施設があります。",
+      "治癒魔法は万能ではありませんが、応急処置や回復の補助として重要な役割を持っています。",
+      "交通には街道や乗合が使われ、一部の国では転移陣による長距離移動も可能です。",
+    ],
+  },
+  {
+    category: "FOOD & SHOPPING",
+    title: "食文化と買い物",
+    paragraphs: [
+      "市場や屋台を中心に食文化が発達しています。",
+      "鮮度維持、防腐、温度固定、匂い漏れ防止などの術式が流通を支えています。",
+      "家庭でも調理、保温、衛生管理を助ける簡易魔法が利用されています。",
+    ],
+  },
+  {
+    category: "HOUSING",
+    title: "住居と街の暮らし",
+    paragraphs: [
+      "住居には灯り、暖房、浄水などの術式が組み込まれています。",
+      "簡易結界や警報術式を備える家もあり、防犯設備も生活インフラの一部です。",
+      "都市部の宿屋には、旅人向けの魔力充填設備や簡易治療設備を備えた施設もあります。",
+    ],
+  },
+  {
+    category: "WORK",
+    title: "仕事と職業",
+    paragraphs: [
+      "術式の整備、充填、点検を担当する技術職が、社会を支えています。",
+      "魔導具の修理、魔法陣の刻印、結界の保守、倉庫管理など、魔法を扱う仕事は多岐にわたります。",
+      "戦闘職だけでなく、鑑定、医療、輸送、警備などの職能も存在します。",
+    ],
+  },
+  {
+    category: "EDUCATION",
+    title: "教育と学び",
+    paragraphs: [
+      "魔法学校のほか、地域の学舎や職人による徒弟制度も存在します。",
+      "読み書きや計算に加えて、生活魔法の基礎、安全な魔力運用、詠唱の作法などが教えられます。",
+      "熟練した術者は、短縮詠唱や無詠唱を習得していきます。",
+    ],
+  },
+  {
+    category: "ENTERTAINMENT",
+    title: "祭り・競技・芸能",
+    paragraphs: [
+      "祭り、劇、競技などの娯楽にも、光や幻影の魔法が利用されています。",
+      "音や匂いまで再現する幻影演目や、魔法の光が夜空を彩る祭りが人気です。",
+      "模擬戦やギルド戦も、技を披露する観戦文化として定着しています。",
+    ],
+  },
+  {
+    category: "PUBLIC SAFETY",
+    title: "治安と日常の安全",
+    paragraphs: [
+      "街の治安は結界、警報術式、見張りによって維持されています。",
+      "魔法犯罪への対策として、公共空間へ検知や抑止の術式が設置される場合もあります。",
+      "街の外には魔物が存在するため、遠征や未開地の調査は主にギルドが担当します。",
+    ],
+  },
+];
+---
+
+<MystiriarumPageLayout
+  pageTitle="社会と生活・娯楽"
+  pageLabel="SOCIETY, LIFE & CULTURE"
+  description="ミスティリアルム・エレディアにおける暮らし、仕事、教育、医療、交通、娯楽を紹介します。"
+  lead="魔法が特別な技ではなく、人々の日常を支えるインフラとして存在する社会。"
+  heroMark="暮"
+  currentPath="/world/mystiriarum-eredia/life"
+  previous={{
+    label: "地理と国家",
+    href: "/world/mystiriarum-eredia/geography",
+  }}
+  next={{
+    label: "組織・制度",
+    href: "/world/mystiriarum-eredia/systems",
+  }}
+>
+  <section class="section" id="page-content">
+    <div class="section-heading">
+      <p>DAILY LIFE</p>
+      <h2>魔法が当たり前の暮らし</h2>
+    </div>
+
+    <article class="intro-card">
+      <p class="small-label">MAGIC INFRASTRUCTURE</p>
+
+      <h3>街と生活を動かす魔法</h3>
+
+      <p>
+        ミスティリアルム・エレディアでは、
+        魔法は一部の術者だけが扱う特別な技ではありません。
+      </p>
+
+      <p>
+        灯り、温度調整、浄水、清掃などの身近な設備にも術式が組み込まれ、
+        街そのものが魔法によって機能しています。
+      </p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>LIFE & CULTURE</p>
+      <h2>社会・生活・娯楽</h2>
+    </div>
+
+    <div class="content-stack">
+      {
+        lifeSections.map((item, index) => (
+          <article class="content-card">
+            <div class="content-card-number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+
+            <div class="content-card-inner">
+              <p class="card-label">{item.category}</p>
+              <h3>{item.title}</h3>
+
+              {item.paragraphs.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</MystiriarumPageLayout>

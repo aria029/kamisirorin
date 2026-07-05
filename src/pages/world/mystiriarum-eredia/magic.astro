@@ -1,0 +1,526 @@
+---
+import MystiriarumPageLayout from "../../../layouts/MystiriarumPageLayout.astro";
+
+const attributes = [
+  "火",
+  "水",
+  "土",
+  "風",
+  "雷",
+  "光",
+  "闇",
+  "無属性",
+];
+
+const magicRanks = [
+  {
+    name: "初級",
+    chants: "1〜2唱節",
+    description: "基礎的で、比較的短い詠唱によって発動する魔法。",
+  },
+  {
+    name: "中級",
+    chants: "3〜6唱節",
+    description: "基礎魔法より高い出力や複雑な制御を必要とする魔法。",
+  },
+  {
+    name: "上級",
+    chants: "7〜10唱節",
+    description: "熟練者向けの高威力・高難度魔法。",
+  },
+  {
+    name: "最上級",
+    chants: "11〜12唱節",
+    description: "大規模な現象を起こす、極めて高度な魔法。",
+  },
+  {
+    name: "極大",
+    chants: "13唱節以上",
+    description: "通常の魔法を大きく超える規模と詠唱を必要とする魔法。",
+  },
+];
+
+const basicSpells = [
+  {
+    attribute: "火属性",
+    name: "紅蓮の火球／ファイアーボール",
+    chant: "爆ぜよ",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、火属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "火属性",
+    name: "紅蓮の火壁／ファイアーウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、火属性の基礎防御魔法。",
+  },
+  {
+    attribute: "水属性",
+    name: "ウォーターボール",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、水属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "水属性",
+    name: "ウォーターウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、水属性の基礎防御魔法。",
+  },
+  {
+    attribute: "土属性",
+    name: "ストーンボール",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、土属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "土属性",
+    name: "ストーンウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、土属性の基礎防御魔法。",
+  },
+  {
+    attribute: "風属性",
+    name: "ウィンドボール",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、風属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "風属性",
+    name: "ウィンドウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、風属性の基礎防御魔法。",
+  },
+  {
+    attribute: "雷属性",
+    name: "ライトニングボール",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、雷属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "雷属性",
+    name: "ライトニングウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、雷属性の基礎防御魔法。",
+  },
+  {
+    attribute: "光属性",
+    name: "ライトボール",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、光属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "光属性",
+    name: "ライトウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、光属性の基礎防御魔法。",
+  },
+  {
+    attribute: "闇属性",
+    name: "ダークボール",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "魔法学校で教えられる、闇属性の基礎攻撃魔法。",
+  },
+  {
+    attribute: "闇属性",
+    name: "ダークウォール",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "魔法学校で教えられる、闇属性の基礎防御魔法。",
+  },
+];
+
+const advancedFireSpells = [
+  {
+    attribute: "火属性・中級",
+    name: "紅蓮の炎槍／フレアボルト",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "炎を槍のように収束させて放つ中級魔法。",
+  },
+  {
+    attribute: "火属性・中級",
+    name: "紅蓮の城壁／ブレイズバリケード",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "炎による広範囲の防壁を形成する中級魔法。",
+  },
+  {
+    attribute: "火属性・上級",
+    name: "紅蓮の滅星／インフェルノ・ノヴァ",
+    chant: "設定中",
+    type: "攻撃魔法",
+    description: "大規模な炎を発生させる上級攻撃魔法。",
+  },
+  {
+    attribute: "火属性・上級",
+    name: "紅蓮の獄炎要塞／インフェルノ・バスティオン",
+    chant: "設定中",
+    type: "防御魔法",
+    description: "獄炎による強固な防衛領域を形成する上級魔法。",
+  },
+];
+
+const pendingCategories = [
+  {
+    category: "ULTIMATE MAGIC",
+    title: "極大魔法",
+    text: "13唱節以上の長い詠唱と、膨大な魔力を必要とする魔法です。詳細設定は準備中です。",
+  },
+  {
+    category: "UNIQUE MAGIC",
+    title: "固有魔法",
+    text: "特定の術者や条件に依存する魔法体系です。詳細設定は準備中です。",
+  },
+  {
+    category: "ANCIENT MAGIC",
+    title: "古代魔法",
+    text: "旧人類が扱っていた、生命力を燃料とする旧仕様の魔法です。詳細はネタバレ項目に記載しています。",
+  },
+];
+---
+
+<MystiriarumPageLayout
+  pageTitle="魔法"
+  pageLabel="MAGIC SYSTEM"
+  description="ミスティリアルム・エレディアの魔力、属性、詠唱、魔法ランク、現代魔法を紹介します。"
+  lead="魔力と詠唱によって現象を起こし、暮らしと戦いの両方を支える力。"
+  heroMark="魔"
+  currentPath="/world/mystiriarum-eredia/magic"
+  previous={{
+    label: "脅威",
+    href: "/world/mystiriarum-eredia/threats",
+  }}
+  next={{
+    label: "用語集",
+    href: "/world/mystiriarum-eredia/glossary",
+  }}
+>
+  <section class="section" id="page-content">
+    <div class="section-heading">
+      <p>WHAT IS MAGIC?</p>
+      <h2>魔法とは何か</h2>
+    </div>
+
+    <article class="intro-card">
+      <p class="small-label">MAGIC OF THE WORLD</p>
+
+      <h3>魔力と詠唱によって現象を起こす力</h3>
+
+      <p>
+        魔法とは、魔力を使い、
+        詠唱によって不思議な現象を発生させる力です。
+      </p>
+
+      <p>
+        この世界では誰もが生まれながらに魔力を持ち、
+        魔法は生活を便利にするためにも、
+        魔物と戦うためにも使われています。
+      </p>
+
+      <p>
+        詠唱は魔法を成立させるための手順ですが、
+        熟練した術者は短縮詠唱や無詠唱を扱うこともできます。
+      </p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>ATTRIBUTES & MANA</p>
+      <h2>属性と魔力</h2>
+    </div>
+
+    <div class="content-stack">
+      <article class="content-card">
+        <div class="content-card-inner">
+          <p class="card-label">MAGIC ATTRIBUTES</p>
+          <h3>七つの基本属性</h3>
+
+          <p>
+            基本属性は火、水、土、風、雷、光、闇の七つです。
+            属性を持たない魔法は無属性に分類されます。
+          </p>
+
+          <div class="tag-list">
+            {attributes.map((attribute) => (
+              <span class="tag">{attribute}</span>
+            ))}
+          </div>
+        </div>
+      </article>
+
+      <article class="content-card">
+        <div class="content-card-inner">
+          <p class="card-label">MANA</p>
+          <h3>魔力の性質</h3>
+
+          <p>
+            魔力は生命力とは別の力であり、
+            人間が生まれながらに持つ魔法の燃料です。
+          </p>
+
+          <ul class="fact-list">
+            <li>魔法を使うと魔力が減少します。</li>
+            <li>使い切っても命に直接関わることはありません。</li>
+            <li>枯渇すると強い疲労によって戦闘が難しくなります。</li>
+            <li>休息によって自然回復し、睡眠が最も効果的です。</li>
+            <li>魔力量は年齢によって衰えず、成長とともに増加します。</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>CHANT & RANK</p>
+      <h2>詠唱と魔法ランク</h2>
+    </div>
+
+    <article class="table-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ランク</th>
+            <th>唱節数の目安</th>
+            <th>概要</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {
+            magicRanks.map((rank) => (
+              <tr>
+                <td>
+                  <span class="rank-badge">{rank.name}</span>
+                </td>
+                <td>{rank.chants}</td>
+                <td>{rank.description}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </article>
+
+    <article class="notice-card" style="margin-top: 20px;">
+      <p class="small-label">MAGIC RULES</p>
+      <h3>魔法が発動する条件</h3>
+
+      <ul class="fact-list">
+        <li>必要な魔力が不足している場合、魔法は発動しません。</li>
+        <li>詠唱を間違えた場合も発動しません。</li>
+        <li>詠唱の言葉と意味を、術者自身が理解する必要があります。</li>
+        <li>同じ詠唱でも、術者の解釈やイメージによって結果が変化します。</li>
+        <li>死者を蘇生する魔法は存在しません。</li>
+        <li>無詠唱は可能ですが、通常より威力や精度が低下します。</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>BASIC MAGIC</p>
+      <h2>基礎魔法</h2>
+    </div>
+
+    <article class="content-card">
+      <div class="content-card-inner">
+        <p class="card-label">ELEMENTAL MAGIC</p>
+        <h3>魔法学校で教えられる基礎術式</h3>
+
+        <p>
+          各属性には、攻撃用の球体魔法と、
+          防御用の壁魔法が用意されています。
+        </p>
+
+        <div class="spell-list">
+          {
+            basicSpells.map((spell) => (
+              <article class="spell-card">
+                <div class="spell-card-top">
+                  <h4>{spell.name}</h4>
+                  <span class="spell-attribute">{spell.attribute}</span>
+                </div>
+
+                <dl>
+                  <dt>分類</dt>
+                  <dd>{spell.type}</dd>
+
+                  <dt>詠唱</dt>
+                  <dd>{spell.chant}</dd>
+
+                  <dt>説明</dt>
+                  <dd>{spell.description}</dd>
+                </dl>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>ADVANCED FIRE MAGIC</p>
+      <h2>火属性の中級・上級魔法</h2>
+    </div>
+
+    <article class="content-card">
+      <div class="content-card-inner">
+        <p class="card-label">FIRE MAGIC</p>
+        <h3>紅蓮系統の魔法</h3>
+
+        <div class="spell-list">
+          {
+            advancedFireSpells.map((spell) => (
+              <article class="spell-card">
+                <div class="spell-card-top">
+                  <h4>{spell.name}</h4>
+                  <span class="spell-attribute">{spell.attribute}</span>
+                </div>
+
+                <dl>
+                  <dt>分類</dt>
+                  <dd>{spell.type}</dd>
+
+                  <dt>詠唱</dt>
+                  <dd>{spell.chant}</dd>
+
+                  <dt>説明</dt>
+                  <dd>{spell.description}</dd>
+                </dl>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card" style="margin-top: 20px;">
+      <div class="content-card-inner">
+        <p class="card-label">SUPREME FIRE MAGIC</p>
+
+        <h3>
+          焼き尽くす炎神の焔<br />
+          イグニス・インフェリア
+        </h3>
+
+        <p>
+          複数の巨大な炎の輪で対象を閉じ込め、
+          内部へ炎柱を立ち上げる最上級殲滅魔法です。
+        </p>
+
+        <p>
+          炎の輪は結界のように脱出を阻み、
+          範囲全体を灼熱で満たします。
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>OTHER MAGIC</p>
+      <h2>そのほかの魔法体系</h2>
+    </div>
+
+    <div class="content-stack">
+      {
+        pendingCategories.map((item, index) => (
+          <article class="content-card">
+            <div class="content-card-number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+
+            <div class="content-card-inner">
+              <p class="card-label">{item.category}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>SECRET OF MAGIC</p>
+      <h2>魔法の真相</h2>
+    </div>
+
+    <div class="spoiler-warning">
+      <p class="small-label">SPOILER WARNING</p>
+      <h3>ここから先はネタバレを含みます</h3>
+
+      <p>
+        天体魔法、古代魔法、世界の観測機構に関する設定です。
+      </p>
+    </div>
+
+    <details class="spoiler-details">
+      <summary>
+        <span>ネタバレ設定を開く</span>
+        <span class="summary-icon" aria-hidden="true">＋</span>
+      </summary>
+
+      <div class="spoiler-content">
+        <article class="secret-card">
+          <p class="card-label">CELESTIAL MAGIC</p>
+          <h3>天体魔法と星のログ</h3>
+
+          <p>
+            天体魔法は、星の運行や暦、季節と同期することで
+            強く安定すると考えられています。
+          </p>
+
+          <p>
+            真相では、世界が文明の情報を星へ不可視の記録として保存しており、
+            天体魔法はその記録に近い参照点を利用するため、
+            現象が成立しやすくなっています。
+          </p>
+
+          <p>
+            現代の人々は星のログを認識できず、
+            天体魔法が強い本当の理由も知りません。
+          </p>
+        </article>
+
+        <article class="secret-card">
+          <p class="card-label">ANCIENT & MODERN MAGIC</p>
+          <h3>古代魔法と現代魔法</h3>
+
+          <p>
+            古代魔法は生命力を燃料とし、
+            無詠唱かつ高威力である一方、
+            使いすぎると術者の死につながる危険な体系でした。
+          </p>
+
+          <p>
+            現代魔法では生命力とは別に魔力が与えられ、
+            詠唱を通じて安全に試行錯誤できるようになっています。
+          </p>
+
+          <p>
+            世界は、新たな人類が長い時間をかけて魔法を発展させ、
+            外敵を倒す決定的な魔法を生み出す可能性に賭けています。
+          </p>
+        </article>
+      </div>
+    </details>
+  </section>
+</MystiriarumPageLayout>

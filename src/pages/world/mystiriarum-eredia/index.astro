@@ -1,24 +1,55 @@
 ---
 const siteName = "神白 凛";
 
-const worldWorks = [
+const worldSections = [
   {
-    category: "WORLD & STORY",
-    title: "ミスティリアルム・エレディア",
-    reading: "",
+    category: "OVERVIEW",
+    title: "世界観",
     description:
-      "世界の歴史・文化・用語・物語の背景を文章にまとめた世界観設定です。",
-    link: "/world/mystiriarum-eredia",
-    status: "設定公開準備中",
+      "ミスティリアルム・エレディアの成り立ちや、世界全体に関わる設定をまとめています。",
+    link: "/world/mystiriarum-eredia/overview",
   },
   {
-    category: "WORLD & STORY",
-    title: "桜花の国",
-    reading: "おうかのくに",
+    category: "GEOGRAPHY",
+    title: "地理と国家",
     description:
-      "世界の歴史・文化・用語・物語の背景を文章にまとめた世界観設定です。",
-    link: "/world/ouka-no-kuni",
-    status: "設定公開準備中",
+      "世界を構成する地域、国家、都市、土地などの地理情報をまとめています。",
+    link: "/world/mystiriarum-eredia/geography",
+  },
+  {
+    category: "LIFE & CULTURE",
+    title: "社会と生活・娯楽",
+    description:
+      "人々の暮らし、文化、教育、食事、交通、仕事、娯楽などをまとめています。",
+    link: "/world/mystiriarum-eredia/life",
+  },
+  {
+    category: "ORGANIZATION & SYSTEM",
+    title: "組織・制度",
+    description:
+      "騎士団、ギルド、学校、教会、商会など、社会を支える組織や制度をまとめています。",
+    link: "/world/mystiriarum-eredia/systems",
+  },
+  {
+    category: "THREATS",
+    title: "脅威",
+    description:
+      "魔物や外敵など、人々や世界に危険をもたらす存在についてまとめています。",
+    link: "/world/mystiriarum-eredia/threats",
+  },
+  {
+    category: "MAGIC",
+    title: "魔法",
+    description:
+      "魔力、属性、詠唱、魔法の分類やランクなど、この世界の魔法体系をまとめています。",
+    link: "/world/mystiriarum-eredia/magic",
+  },
+  {
+    category: "GLOSSARY",
+    title: "用語集",
+    description:
+      "地域名、国家名、組織名、魔法など、世界に登場する固有名詞をまとめています。",
+    link: "/world/mystiriarum-eredia/glossary",
   },
 ];
 ---
@@ -27,13 +58,15 @@ const worldWorks = [
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="description"
-      content="神白 凛が制作する、小説や漫画の舞台となる世界観・物語設定の作品一覧です。"
+      content="神白 凛が制作する世界観作品、ミスティリアルム・エレディアの設定資料ページです。"
     />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>世界観・物語設定 | 神白 凛</title>
+    <title>ミスティリアルム・エレディア | 神白 凛</title>
   </head>
 
   <body>
@@ -51,74 +84,91 @@ const worldWorks = [
 
     <main>
       <section class="world-hero">
-        <div class="hero-decoration" aria-hidden="true">界</div>
+        <div class="hero-decoration" aria-hidden="true">魔</div>
 
         <div class="hero-inner">
-          <p class="hero-label">WORLD &amp; STORY</p>
+          <p class="hero-label">MYSTIRIARUM EREDIA</p>
 
-          <h1>世界観・物語設定</h1>
+          <h1>
+            ミスティリアルム
+            <span>・エレディア</span>
+          </h1>
 
           <p class="hero-lead">
-            小説や漫画の舞台となる世界を考え、歴史・文化・用語・物語の背景を文章にまとめています。
+            魔法が存在する世界「ミスティリアルム・エレディア」の
+            歴史、地理、文化、社会、魔法、用語などをまとめています。
           </p>
 
           <div class="hero-actions">
-            <a class="button primary" href="#world-works">
-              作品一覧を見る
+            <a class="button primary" href="#contents">
+              設定資料を見る
             </a>
 
-            <a class="button" href="/#works">
-              トップの作品集へ戻る
+            <a class="button" href="/world">
+              作品一覧へ戻る
             </a>
           </div>
         </div>
       </section>
 
-      <section class="section" id="world-works">
+      <section class="section introduction-section">
         <div class="section-heading">
-          <p>WORLD WORKS</p>
-          <h2>作品一覧</h2>
+          <p>ABOUT THIS WORLD</p>
+          <h2>この世界について</h2>
         </div>
 
-        <div class="works-introduction">
+        <article class="introduction-card">
+          <div class="introduction-content">
+            <p class="small-label">WORLD INTRODUCTION</p>
+
+            <h3>魔法と人々が共に生きる世界</h3>
+
+            <p>
+              ミスティリアルム・エレディアは、魔法が人々の暮らしや社会に
+              深く根付いている世界です。
+            </p>
+
+            <p>
+              このページでは、世界全体の成り立ちから、地域や国家、
+              人々の生活、社会制度、脅威、魔法体系まで、
+              物語の舞台となる世界の設定を項目ごとに掲載します。
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="contents">
+        <div class="section-heading">
+          <p>WORLD DOCUMENTS</p>
+          <h2>設定資料</h2>
+        </div>
+
+        <div class="contents-introduction">
           <p>
-            閲覧したい作品のタイトルを選択してください。
-            各作品のページでは、世界観の概要、設定資料、用語・設定メモなどを掲載します。
+            閲覧したい項目を選択してください。
+            各ページに、ミスティリアルム・エレディアの設定を分類して掲載します。
           </p>
         </div>
 
-        <div class="world-works-grid">
+        <div class="contents-grid">
           {
-            worldWorks.map((work, index) => (
-              <a class="world-work-card" href={work.link}>
-                <div class="world-work-number" aria-hidden="true">
+            worldSections.map((section, index) => (
+              <a class="content-card" href={section.link}>
+                <div class="content-number" aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                <div class="world-work-top">
-                  <p>{work.category}</p>
-                  <span>{work.status}</span>
+                <div class="content-card-top">
+                  <p>{section.category}</p>
                 </div>
 
-                <div class="world-work-content">
-                  <h3>
-                    {
-                      work.reading ? (
-                        <ruby>
-                          {work.title}
-                          <rt>{work.reading}</rt>
-                        </ruby>
-                      ) : (
-                        work.title
-                      )
-                    }
-                  </h3>
-
-                  <p>{work.description}</p>
+                <div class="content-card-main">
+                  <h3>{section.title}</h3>
+                  <p>{section.description}</p>
                 </div>
 
-                <div class="world-work-footer">
-                  <span>世界観・物語設定を見る</span>
+                <div class="content-card-footer">
+                  <span>{section.title}を見る</span>
                   <span aria-hidden="true">→</span>
                 </div>
               </a>
@@ -130,17 +180,17 @@ const worldWorks = [
       <section class="section return-section">
         <div class="return-card">
           <div>
-            <p class="small-label">BACK TO PORTFOLIO</p>
+            <p class="small-label">BACK TO WORLD WORKS</p>
 
-            <h2>ほかの活動・作品を見る</h2>
+            <h2>ほかの世界観作品を見る</h2>
 
             <p>
-              YouTubeでの活動や、そのほかの制作物はトップページから確認できます。
+              世界観・物語設定の作品一覧から、ほかの世界を確認できます。
             </p>
           </div>
 
-          <a class="button primary" href="/#works">
-            作品集へ戻る
+          <a class="button primary" href="/world">
+            作品一覧へ戻る
           </a>
         </div>
       </section>
@@ -183,6 +233,7 @@ const worldWorks = [
   }
 
   body {
+    min-height: 100vh;
     margin: 0;
     font-family:
       "Kaisei Tokumin",
@@ -241,7 +292,7 @@ const worldWorks = [
   }
 
   body::after {
-    content: "✿ ✦ ✿";
+    content: "✦ ✧ ✦";
     position: fixed;
     right: 5vw;
     bottom: 4vh;
@@ -256,16 +307,6 @@ const worldWorks = [
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  ruby {
-    ruby-position: over;
-  }
-
-  rt {
-    color: var(--sakura-deep);
-    font-size: 0.42em;
-    letter-spacing: 0.12em;
   }
 
   .site-header {
@@ -283,11 +324,11 @@ const worldWorks = [
   }
 
   .logo {
+    color: var(--sakura-deep);
     font-family:
       "Yuji Syuku",
       "Kaisei Tokumin",
       serif;
-    color: var(--sakura-deep);
     font-size: 26px;
     font-weight: 400;
     letter-spacing: 0.14em;
@@ -316,7 +357,7 @@ const worldWorks = [
 
   .world-hero {
     position: relative;
-    min-height: 74vh;
+    min-height: 76vh;
     display: grid;
     place-items: center;
     overflow: hidden;
@@ -327,7 +368,7 @@ const worldWorks = [
   .world-hero::before {
     content: "";
     position: absolute;
-    width: min(680px, 74vw);
+    width: min(700px, 76vw);
     aspect-ratio: 1;
     border: 1px solid rgba(240, 138, 170, 0.28);
     border-radius: 50%;
@@ -338,7 +379,7 @@ const worldWorks = [
   .world-hero::after {
     content: "";
     position: absolute;
-    width: min(390px, 46vw);
+    width: min(400px, 46vw);
     aspect-ratio: 1;
     border: 1px solid rgba(221, 111, 148, 0.26);
     background: rgba(255, 255, 255, 0.26);
@@ -347,12 +388,12 @@ const worldWorks = [
 
   .hero-decoration {
     position: absolute;
+    color: rgba(240, 138, 170, 0.11);
     font-family:
       "Yuji Syuku",
       "Kaisei Tokumin",
       serif;
-    color: rgba(240, 138, 170, 0.12);
-    font-size: clamp(190px, 32vw, 430px);
+    font-size: clamp(200px, 34vw, 450px);
     line-height: 1;
     user-select: none;
   }
@@ -360,7 +401,7 @@ const worldWorks = [
   .hero-inner {
     position: relative;
     z-index: 1;
-    width: min(900px, 90vw);
+    width: min(1000px, 90vw);
     text-align: center;
   }
 
@@ -380,11 +421,15 @@ const worldWorks = [
       "Yuji Syuku",
       "Kaisei Tokumin",
       serif;
-    font-size: clamp(56px, 10vw, 118px);
+    font-size: clamp(52px, 9vw, 108px);
     font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 0.08em;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
     text-shadow: 0 8px 34px rgba(240, 138, 170, 0.18);
+  }
+
+  h1 span {
+    white-space: nowrap;
   }
 
   .hero-lead {
@@ -466,7 +511,44 @@ const worldWorks = [
     letter-spacing: 0.08em;
   }
 
-  .works-introduction {
+  .introduction-card,
+  .return-card {
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 214, 225, 0.72),
+        transparent 46%
+      ),
+      rgba(255, 255, 255, 0.88);
+    box-shadow: 0 24px 80px var(--shadow);
+  }
+
+  .introduction-card {
+    padding: clamp(30px, 5vw, 58px);
+  }
+
+  .introduction-content {
+    max-width: 850px;
+  }
+
+  .introduction-content h3 {
+    margin: 10px 0 18px;
+    font-family:
+      "Yuji Syuku",
+      "Kaisei Tokumin",
+      serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .introduction-content > p {
+    color: var(--muted);
+  }
+
+  .contents-introduction {
     margin-bottom: 28px;
     padding: 20px 24px;
     border: 1px solid rgba(221, 111, 148, 0.24);
@@ -474,25 +556,25 @@ const worldWorks = [
     background: rgba(255, 255, 255, 0.66);
   }
 
-  .works-introduction p {
+  .contents-introduction p {
     margin: 0;
     color: var(--muted);
   }
 
-  .world-works-grid {
+  .contents-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 
-  .world-work-card {
+  .content-card {
     position: relative;
-    min-height: 360px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     overflow: hidden;
-    padding: 30px;
+    padding: 28px;
     border: 1px solid var(--line);
     border-radius: 28px;
     background:
@@ -509,108 +591,83 @@ const worldWorks = [
       box-shadow 0.2s ease;
   }
 
-  .world-work-card::before {
-    content: "✿";
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    color: rgba(221, 111, 148, 0.24);
-    font-size: 72px;
-    line-height: 1;
-  }
-
-  .world-work-card:hover {
+  .content-card:hover {
     transform: translateY(-6px);
     border-color: rgba(221, 111, 148, 0.52);
     box-shadow: 0 30px 76px rgba(238, 143, 170, 0.22);
   }
 
-  .world-work-number {
+  .content-number {
     position: absolute;
-    right: 24px;
-    bottom: 58px;
+    right: 22px;
+    bottom: 62px;
     color: rgba(221, 111, 148, 0.08);
     font-family:
       "Yuji Syuku",
       "Kaisei Tokumin",
       serif;
-    font-size: clamp(100px, 15vw, 180px);
+    font-size: clamp(100px, 13vw, 160px);
     line-height: 0.7;
     pointer-events: none;
   }
 
-  .world-work-top {
+  .content-card-top {
     position: absolute;
-    top: 26px;
-    left: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
+    top: 24px;
+    left: 28px;
+    right: 28px;
   }
 
-  .world-work-top p {
+  .content-card-top p {
     margin: 0;
     color: var(--sakura-deep);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
   }
 
-  .world-work-top span {
-    padding: 3px 10px;
-    border: 1px solid rgba(221, 111, 148, 0.28);
-    border-radius: 999px;
-    color: var(--sakura-deep);
-    background: rgba(255, 255, 255, 0.7);
-    font-size: 11px;
-  }
-
-  .world-work-content {
+  .content-card-main {
     position: relative;
     z-index: 1;
   }
 
-  .world-work-content h3 {
-    margin: 0 0 20px;
+  .content-card-main h3 {
+    margin: 0 0 14px;
     font-family:
       "Yuji Syuku",
       "Kaisei Tokumin",
       serif;
-    font-size: clamp(38px, 5vw, 58px);
+    font-size: 34px;
     font-weight: 400;
-    line-height: 1.35;
-    letter-spacing: 0.08em;
+    line-height: 1.4;
   }
 
-  .world-work-content p {
-    max-width: 720px;
+  .content-card-main p {
     margin: 0;
     color: var(--muted);
   }
 
-  .world-work-footer {
+  .content-card-footer {
     position: relative;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 18px;
-    margin-top: 30px;
-    padding-top: 16px;
+    margin-top: 26px;
+    padding-top: 15px;
     border-top: 1px solid rgba(238, 143, 170, 0.26);
     color: var(--sakura-deep);
     font-size: 14px;
     font-weight: 700;
   }
 
-  .world-work-footer span:last-child {
+  .content-card-footer span:last-child {
     font-size: 22px;
     transition: transform 0.2s ease;
   }
 
-  .world-work-card:hover .world-work-footer span:last-child {
+  .content-card:hover .content-card-footer span:last-child {
     transform: translateX(5px);
   }
 
@@ -624,16 +681,6 @@ const worldWorks = [
     justify-content: space-between;
     gap: 32px;
     padding: clamp(30px, 5vw, 54px);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255, 214, 225, 0.72),
-        transparent 46%
-      ),
-      rgba(255, 255, 255, 0.88);
-    box-shadow: 0 24px 80px var(--shadow);
   }
 
   .return-card h2 {
@@ -695,6 +742,10 @@ const worldWorks = [
       margin-top: 8px;
     }
 
+    .contents-grid {
+      grid-template-columns: 1fr;
+    }
+
     .return-card {
       align-items: flex-start;
       flex-direction: column;
@@ -708,43 +759,39 @@ const worldWorks = [
     }
 
     h1 {
-      font-size: clamp(48px, 15vw, 74px);
+      font-size: clamp(44px, 13vw, 70px);
     }
 
-    .world-work-card {
-      min-height: 330px;
-      padding: 26px 22px;
-      border-radius: 22px;
+    h1 span {
+      white-space: normal;
     }
 
-    .world-work-top {
-      top: 22px;
-      left: 22px;
-      right: 22px;
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .world-work-card::before {
-      top: 24px;
-      right: 22px;
-      font-size: 58px;
-    }
-
-    .world-work-content h3 {
-      font-size: 38px;
-    }
-
-    .world-work-number {
-      right: 14px;
-      bottom: 64px;
-      font-size: 110px;
-    }
-
+    .introduction-card,
     .return-card {
       padding: 26px 22px;
       border-radius: 22px;
+    }
+
+    .content-card {
+      min-height: 280px;
+      padding: 26px 22px;
+      border-radius: 22px;
+    }
+
+    .content-card-top {
+      top: 22px;
+      left: 22px;
+      right: 22px;
+    }
+
+    .content-card-main h3 {
+      font-size: 30px;
+    }
+
+    .content-number {
+      right: 14px;
+      bottom: 66px;
+      font-size: 110px;
     }
   }
 </style>

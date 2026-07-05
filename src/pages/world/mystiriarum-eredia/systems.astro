@@ -1,0 +1,143 @@
+---
+import MystiriarumPageLayout from "../../../layouts/MystiriarumPageLayout.astro";
+
+const organizations = [
+  {
+    category: "PUBLIC DEFENSE",
+    title: "騎士団",
+    text: "国内の治安維持と防衛を担う組織です。街の警備、魔法犯罪への対処、危険区域の封鎖、非常時の避難誘導や防衛線の構築を行います。",
+  },
+  {
+    category: "FIELD OPERATIONS",
+    title: "ギルド",
+    text: "都市の外側を担当する実働組織です。魔物討伐、未開地調査、護送、鑑定などを請け負い、依頼と報酬の仲介も行います。",
+  },
+  {
+    category: "EDUCATION & RESEARCH",
+    title: "魔法学校",
+    text: "術者の育成と研究を行う教育機関です。基礎教育から高度な術式研究までを扱い、卒業歴や師弟関係は社会的信用にもつながります。",
+  },
+  {
+    category: "MEDICAL",
+    title: "教会・医療機関",
+    text: "治癒魔法を扱うヒーラーが所属し、病院に相当する役割を担います。応急処置、回復補助、衛生管理、感染症対策などを行います。",
+  },
+  {
+    category: "COMMERCE",
+    title: "商会",
+    text: "輸送網、倉庫、取引の仲介を担う組織です。商品の価格や品質、支払いの信用を整え、交易都市では大きな影響力を持ちます。",
+  },
+  {
+    category: "CRAFT & INDUSTRY",
+    title: "工房",
+    text: "武具、魔導具、生活設備を製造・修理する職人組織です。技術共有、素材確保、品質管理を行い、都市の産業基盤を支えます。",
+  },
+];
+
+const systems = [
+  {
+    category: "TRANSPORT",
+    title: "交通制度",
+    text: "街道や乗合に加え、一部の地域では転移陣による長距離移動が可能です。転移陣は設置と維持に費用がかかるため、管理施設によって統制されています。",
+  },
+  {
+    category: "REQUESTS & CONTRACTS",
+    title: "依頼制度",
+    text: "討伐、護衛、調査などの危険な仕事は、依頼内容、報酬、危険度を明記した契約として整理されます。",
+  },
+  {
+    category: "DISASTER RESPONSE",
+    title: "災害・避難制度",
+    text: "魔物や自然災害に備え、街には警報、区域封鎖、避難誘導、避難所運用の手順が整えられています。",
+  },
+  {
+    category: "TRADE & CREDIT",
+    title: "取引と信用",
+    text: "遠距離交易や高額取引では、商会の保証や手形に相当する仕組みが使われ、現金を直接運ばずに取引できます。",
+  },
+  {
+    category: "INFORMATION",
+    title: "情報共有",
+    text: "依頼、魔物の出没、街道の安全状況などは、掲示板、通報、記録を通じて社会全体へ共有されます。",
+  },
+];
+---
+
+<MystiriarumPageLayout
+  pageTitle="組織・制度"
+  pageLabel="ORGANIZATIONS & SYSTEMS"
+  description="ミスティリアルム・エレディアの騎士団、ギルド、学校、商会、社会制度を紹介します。"
+  lead="人々の暮らしと安全を支え、魔法文明を動かす組織と社会の仕組み。"
+  heroMark="組"
+  currentPath="/world/mystiriarum-eredia/systems"
+  previous={{
+    label: "社会と生活・娯楽",
+    href: "/world/mystiriarum-eredia/life",
+  }}
+  next={{
+    label: "脅威",
+    href: "/world/mystiriarum-eredia/threats",
+  }}
+>
+  <section class="section" id="page-content">
+    <div class="section-heading">
+      <p>ORGANIZATIONS</p>
+      <h2>社会を支える組織</h2>
+    </div>
+
+    <article class="intro-card">
+      <p class="small-label">SOCIAL STRUCTURE</p>
+
+      <h3>役割を分担する組織</h3>
+
+      <p>
+        国内の治安を守る騎士団、都市外の危険へ対処するギルド、
+        術者を育成する学校など、
+        それぞれの組織が異なる領域を担当しています。
+      </p>
+    </article>
+
+    <div class="content-stack" style="margin-top: 20px;">
+      {
+        organizations.map((organization, index) => (
+          <article class="content-card">
+            <div class="content-card-number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+
+            <div class="content-card-inner">
+              <p class="card-label">{organization.category}</p>
+              <h3>{organization.title}</h3>
+              <p>{organization.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>SOCIAL SYSTEMS</p>
+      <h2>社会を動かす制度</h2>
+    </div>
+
+    <div class="content-stack">
+      {
+        systems.map((system, index) => (
+          <article class="content-card">
+            <div class="content-card-number" aria-hidden="true">
+              {String(index + 7).padStart(2, "0")}
+            </div>
+
+            <div class="content-card-inner">
+              <p class="card-label">{system.category}</p>
+              <h3>{system.title}</h3>
+              <p>{system.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</MystiriarumPageLayout>

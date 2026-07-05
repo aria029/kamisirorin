@@ -1,0 +1,203 @@
+---
+import MystiriarumPageLayout from "../../../layouts/MystiriarumPageLayout.astro";
+
+const threatRanks = [
+  {
+    rank: "D",
+    force: "2〜5人程度",
+    description: "少人数のギルド員で対処できる脅威。",
+  },
+  {
+    rank: "C",
+    force: "5〜10人程度",
+    description: "小隊規模での連携が推奨される脅威。",
+  },
+  {
+    rank: "B",
+    force: "10〜20人程度",
+    description: "部隊規模の案件。上位ギルド員の参加が必要になる場合があります。",
+  },
+  {
+    rank: "A",
+    force: "20〜50人程度",
+    description: "広域に被害を及ぼす災害級。大規模戦力が必要です。",
+  },
+  {
+    rank: "S",
+    force: "複数のS級と多数のA級",
+    description: "単独で国家を滅ぼし得る国家破壊級の脅威。",
+  },
+];
+
+const secretThreats = [
+  {
+    category: "OUTSIDE ENEMY",
+    title: "外敵",
+    paragraphs: [
+      "世界の外側から侵入する、世界の法則に完全には組み込まれていない異物です。",
+      "最初から非常に高い力と知性を持ち、敗北の可能性を察知すると戦術や対抗策を組み立てます。",
+      "旧時代の戦いでは旧人類が滅亡し、外敵の首領も深い傷を負って未開の領域の最奥で休眠しています。",
+    ],
+  },
+  {
+    category: "THE MOTHER",
+    title: "母の復活条件",
+    paragraphs: [
+      "外敵や魔物は、その首領を「母」と呼んでいます。",
+      "母は旧時代に失った血を補うことで復活できるとされ、外敵は条件を満たす血を集めています。",
+      "魔物の血では条件を満たせず、人間の血が代替として利用できるため、外敵が人類を狙う理由となっています。",
+    ],
+  },
+  {
+    category: "ORIGIN OF MONSTERS",
+    title: "魔物の出現理由",
+    paragraphs: [
+      "魔物は、世界に残された外敵の血から自然発生する存在です。",
+      "旧時代の戦争によって土壌には微細な汚染が残り、発生を完全に止めるには土そのものを入れ替える必要があります。",
+      "未開の領域の魔物が特に強いのは、その周辺が古代戦争の主戦場だったためです。",
+    ],
+  },
+  {
+    category: "MONSTER MAGIC",
+    title: "魔物が魔法を使う理由",
+    paragraphs: [
+      "外敵は旧人類との戦いを通じて魔法を解析し、その情報が魔物にも引き継がれました。",
+      "魔物は現代の日常的な脅威であると同時に、古代の戦争と外敵の存在を示す痕跡でもあります。",
+    ],
+  },
+];
+---
+
+<MystiriarumPageLayout
+  pageTitle="脅威"
+  pageLabel="THREATS"
+  description="ミスティリアルム・エレディアに存在する魔物、脅威度、外敵の設定を紹介します。"
+  lead="各地に現れる魔物と、世界の深層に潜む文明そのものへの脅威。"
+  heroMark="脅"
+  currentPath="/world/mystiriarum-eredia/threats"
+  previous={{
+    label: "組織・制度",
+    href: "/world/mystiriarum-eredia/systems",
+  }}
+  next={{
+    label: "魔法",
+    href: "/world/mystiriarum-eredia/magic",
+  }}
+>
+  <section class="section" id="page-content">
+    <div class="section-heading">
+      <p>MONSTERS</p>
+      <h2>世界各地に現れる魔物</h2>
+    </div>
+
+    <article class="intro-card">
+      <p class="small-label">DANGER OF THE WORLD</p>
+
+      <h3>人間と同じく魔法を扱う存在</h3>
+
+      <p>
+        この世界における身近な脅威は、
+        各地に出現する魔物です。
+      </p>
+
+      <p>
+        魔物は世界のさまざまな場所に存在し、
+        人間と同様に魔法を扱います。
+        特に未開の領域に現れる個体は強力であり、
+        同じ種類でも危険度が大きく異なります。
+      </p>
+
+      <p>
+        魔物がどこから出現するのかについては、
+        現代の人々には解明されていません。
+      </p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>THREAT RANK</p>
+      <h2>魔物の脅威度</h2>
+    </div>
+
+    <article class="table-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ランク</th>
+            <th>必要戦力の目安</th>
+            <th>概要</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {
+            threatRanks.map((item) => (
+              <tr>
+                <td>
+                  <span class="rank-badge">{item.rank}</span>
+                </td>
+                <td>{item.force}</td>
+                <td>{item.description}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </article>
+
+    <article class="notice-card" style="margin-top: 20px;">
+      <p class="small-label">RANK NOTE</p>
+      <h3>ランクは必要戦力を示す</h3>
+
+      <p>
+        脅威度は単純な強さではなく、
+        対処に必要な人数や戦力を基準に決められます。
+      </p>
+
+      <p>
+        魔物が群れとして組織的に行動する場合や、
+        未開の領域に出現した場合は、
+        同じランクでも危険度が上昇します。
+      </p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>SECRET THREATS</p>
+      <h2>脅威の真相</h2>
+    </div>
+
+    <div class="spoiler-warning">
+      <p class="small-label">SPOILER WARNING</p>
+      <h3>ここから先はネタバレを含みます</h3>
+
+      <p>
+        外敵、魔物の起源、旧時代の戦争に関する設定です。
+      </p>
+    </div>
+
+    <details class="spoiler-details">
+      <summary>
+        <span>ネタバレ設定を開く</span>
+        <span class="summary-icon" aria-hidden="true">＋</span>
+      </summary>
+
+      <div class="spoiler-content">
+        {
+          secretThreats.map((item) => (
+            <article class="secret-card">
+              <p class="card-label">{item.category}</p>
+              <h3>{item.title}</h3>
+
+              {item.paragraphs.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </article>
+          ))
+        }
+      </div>
+    </details>
+  </section>
+</MystiriarumPageLayout>

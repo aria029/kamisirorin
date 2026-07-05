@@ -1,0 +1,227 @@
+---
+import MystiriarumPageLayout from "../../../layouts/MystiriarumPageLayout.astro";
+
+const regions = [
+  {
+    category: "CENTRAL REGION",
+    title: "セントネリア地方",
+    text: "文明が集まる中心地域です。学術・交易・工学の拠点となる都市国家が、それぞれの役割を分担しています。",
+    places: [
+      {
+        name: "グランディオス",
+        text: "世界最大規模の首都国。魔法学校、騎士団、ギルド本部が集まり、魔法を使った祭りやギルド戦も行われます。",
+        feature: "名物：魔法祭／ギルド戦",
+      },
+      {
+        name: "リッジフォート",
+        text: "魔導具や機械製造を得意とする工房都市。魔法を直接放つよりも、道具や設備へ組み込む技術が発達しています。",
+        feature: "名物：工房街区",
+      },
+      {
+        name: "メリディア・ポート",
+        text: "世界交易を支える港湾都市。保存、検疫、倉庫管理などの物流魔法が発達し、争いには関与しない中立国として振る舞います。",
+        feature: "名物：港を覆う結界",
+      },
+    ],
+  },
+  {
+    category: "DESERT REGION",
+    title: "アレイザール地方",
+    text: "乾いた砂漠が広がり、限られた資源と生存のための秩序が根付いた地域です。",
+    places: [
+      {
+        name: "ソルカリフ",
+        text: "砂嵐に備えた地下通路や耐砂結界を持つ砂漠国家。鉱物や遺物を産出しますが、食料や飲料は輸入に頼っています。",
+        feature: "名物：砂嵐観測塔",
+      },
+    ],
+  },
+  {
+    category: "SNOW REGION",
+    title: "ホワイトノクス地方",
+    text: "雪と氷に覆われた極寒地域です。過酷な気候に適応した防衛技術と保存技術が発達しています。",
+    places: [
+      {
+        name: "フロストヴァリア",
+        text: "防衛と籠城に特化した城塞国家。吹雪の中での索敵や凍結結界を体系化し、温室魔法と永久氷の倉庫で食料を備蓄します。",
+        feature: "名物：氷壁の城",
+      },
+    ],
+  },
+  {
+    category: "FOREST REGION",
+    title: "シルヴァリス地方",
+    text: "巨大樹と深い森林が広がる地域です。豊かな自然資源が国力となる一方、森の奥には未調査の領域が残っています。",
+    places: [
+      {
+        name: "ヴェルデリア",
+        text: "薬草、樹液、繊維、菌類などを扱う森林国家。魔法研究や薬学研究が盛んです。",
+        feature: "名物：国の中心にそびえる巨大樹",
+      },
+      {
+        name: "古代遺跡ヴェルデグレイブ",
+        text: "森の奥深くで発見された古代都市遺跡。古代の文献が残され、現在も調査と解読が続けられています。",
+        feature: "分類：古代遺跡",
+      },
+    ],
+  },
+  {
+    category: "MOUNTAIN REGION",
+    title: "グラナイトレンジ地方",
+    text: "険しい山岳地帯です。山道、砦、関所を利用した防衛体制が発達しています。",
+    places: [
+      {
+        name: "ヴァルガルド",
+        text: "山岳地形を生かした防衛国家。斥候、狭所での迎撃、補給線の維持を重視し、少数でも侵入を防げる構造を築いています。",
+        feature: "特徴：砦線と関所",
+      },
+    ],
+  },
+  {
+    category: "UNKNOWN REGION",
+    title: "未開の領域",
+    text: "ホワイトノクス地方とグラナイトレンジ地方のさらに北に広がる、人類の踏破が進んでいない地域です。通常より強力な魔物が確認されており、ギルドによる調査が続いています。",
+    places: [],
+  },
+];
+---
+
+<MystiriarumPageLayout
+  pageTitle="地理と国家"
+  pageLabel="GEOGRAPHY & NATIONS"
+  description="ミスティリアルム・エレディアの地方、国家、都市、未開の領域を紹介します。"
+  lead="異なる気候と文化を持つ五つの地方と、そこで役割を担う国や都市。"
+  heroMark="地"
+  currentPath="/world/mystiriarum-eredia/geography"
+  previous={{
+    label: "世界観",
+    href: "/world/mystiriarum-eredia/overview",
+  }}
+  next={{
+    label: "社会と生活・娯楽",
+    href: "/world/mystiriarum-eredia/life",
+  }}
+>
+  <section class="section" id="page-content">
+    <div class="section-heading">
+      <p>WORLD GEOGRAPHY</p>
+      <h2>世界全体の地理</h2>
+    </div>
+
+    <article class="intro-card">
+      <p class="small-label">MYSTIRIARUM EREDIA</p>
+
+      <h3>気候と文化の異なる五つの地方</h3>
+
+      <p>
+        ミスティリアルム・エレディアは、
+        魔法文明によって成り立つ世界です。
+      </p>
+
+      <p>
+        地方ごとに気候や文化が異なり、
+        各都市は学術、交易、工業、防衛など、
+        それぞれの役割を担っています。
+      </p>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>WORLD MAP</p>
+      <h2>世界地図</h2>
+    </div>
+
+    <article class="map-card">
+      <p class="small-label">MAP OF THE WORLD</p>
+
+      <h3>地方と主要都市の配置</h3>
+
+      <div class="map-frame">
+        <img
+          src="/images/mystiriarum-eredia/world-map.png"
+          alt="ミスティリアルム・エレディアの世界地図"
+          loading="lazy"
+        />
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>REGIONS & CITIES</p>
+      <h2>地方・国家・都市</h2>
+    </div>
+
+    <div class="content-stack">
+      {
+        regions.map((region, index) => (
+          <article class="content-card">
+            <div class="content-card-number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+
+            <div class="content-card-inner">
+              <p class="card-label">{region.category}</p>
+              <h3>{region.title}</h3>
+              <p>{region.text}</p>
+
+              {
+                region.places.length > 0 && (
+                  <div class="subitem-list">
+                    {region.places.map((place) => (
+                      <div class="subitem">
+                        <h4>{place.name}</h4>
+                        <p>{place.text}</p>
+                        <span class="subitem-meta">{place.feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                )
+              }
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p>SECRET OF THE RUINS</p>
+      <h2>遺跡に残された真相</h2>
+    </div>
+
+    <div class="spoiler-warning">
+      <p class="small-label">SPOILER WARNING</p>
+      <h3>ここから先はネタバレを含みます</h3>
+      <p>
+        古代遺跡ヴェルデグレイブの正体に関する設定です。
+      </p>
+    </div>
+
+    <details class="spoiler-details">
+      <summary>
+        <span>ネタバレ設定を開く</span>
+        <span class="summary-icon" aria-hidden="true">＋</span>
+      </summary>
+
+      <div class="spoiler-content">
+        <article class="secret-card">
+          <p class="card-label">ANCIENT CAPITAL</p>
+          <h3>首都カーディナリス</h3>
+
+          <p>
+            カーディナリスは、
+            現代でヴェルデグレイブと呼ばれている遺跡の正式名称です。
+          </p>
+
+          <p>
+            発見された文献の解読により、
+            この場所が古代文明における首都だったことが判明しています。
+          </p>
+        </article>
+      </div>
+    </details>
+  </section>
+</MystiriarumPageLayout>
