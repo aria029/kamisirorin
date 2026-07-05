@@ -1,0 +1,695 @@
+---
+const tracks = [
+  {
+    number: "01",
+    title: "初めて作ったBGM",
+    file: "first_game_bgm.wav",
+    src: "/audio/first_game_bgm.wav",
+    category: "GAME BGM",
+    description: "初めて制作したゲーム向けBGMです。",
+  },
+  {
+    number: "02",
+    title: "戦闘用BGM",
+    file: "battle_bgm_01_loop.wav",
+    src: "/audio/battle_bgm_01_loop.wav",
+    category: "BATTLE BGM",
+    description: "ゲームの戦闘シーンで使用することを想定したBGMです。",
+  },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="description"
+      content="神白 凛が制作したゲーム向けBGMを試聴・ダウンロードできるページです。"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>作曲・ゲームBGM | 神白 凛</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="logo" href="/">神白 凛</a>
+
+      <nav class="nav">
+        <a href="/">ホーム</a>
+        <a href="/#profile">プロフィール</a>
+        <a href="/#youtube">YouTube</a>
+        <a href="/#works">作品集</a>
+        <a href="/#contact">コンタクト</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-mark" aria-hidden="true">音</div>
+
+        <div class="hero-content">
+          <p class="hero-label">MUSIC & GAME BGM</p>
+
+          <h1>作曲・ゲームBGM</h1>
+
+          <p class="hero-description">
+            ゲームで使用できるオリジナルBGMを掲載しています。<br />
+            ページ内で試聴し、WAVファイルをダウンロードできます。
+          </p>
+
+          <a class="hero-button" href="#track-list">
+            BGMを聴く
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="music-section" id="track-list">
+        <div class="section-heading">
+          <div>
+            <p>MUSIC LIST</p>
+            <h2>BGM一覧</h2>
+          </div>
+
+          <span>再生ボタンから試聴できます</span>
+        </div>
+
+        <div class="track-list">
+          {
+            tracks.map((track) => (
+              <article class="track-card">
+                <div class="track-number" aria-hidden="true">
+                  {track.number}
+                </div>
+
+                <div class="track-content">
+                  <div class="track-heading">
+                    <div>
+                      <p class="track-category">{track.category}</p>
+                      <h3>{track.title}</h3>
+                    </div>
+
+                    <span class="file-type">WAV</span>
+                  </div>
+
+                  <p class="track-description">{track.description}</p>
+
+                  <p class="file-name">{track.file}</p>
+
+                  <div class="player-area">
+                    <audio
+                      controls
+                      preload="metadata"
+                      aria-label={`${track.title}を再生`}
+                      data-audio-player
+                    >
+                      <source src={track.src} type="audio/wav" />
+
+                      お使いのブラウザは音声の再生に対応していません。
+                    </audio>
+                  </div>
+
+                  <div class="track-footer">
+                    <p>
+                      ダウンロード形式
+                      <strong>WAV</strong>
+                    </p>
+
+                    <a
+                      class="download-button"
+                      href={track.src}
+                      download={track.file}
+                    >
+                      <span aria-hidden="true">↓</span>
+                      ダウンロード
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="usage-note">
+          <p class="small-label">ABOUT DOWNLOAD</p>
+
+          <h2>音源のダウンロードについて</h2>
+
+          <p>
+            各BGMの「ダウンロード」ボタンを押すと、
+            元のファイル名のままWAVファイルを保存できます。
+          </p>
+        </div>
+
+        <div class="back-area">
+          <a class="back-button" href="/#works">
+            <span aria-hidden="true">←</span>
+            作品集へ戻る
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 神白 凛</p>
+    </footer>
+
+    <script is:inline>
+      const audioPlayers = Array.from(
+        document.querySelectorAll("[data-audio-player]"),
+      );
+
+      audioPlayers.forEach((currentPlayer) => {
+        currentPlayer.addEventListener("play", () => {
+          audioPlayers.forEach((otherPlayer) => {
+            if (otherPlayer !== currentPlayer) {
+              otherPlayer.pause();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700;800&family=Yuji+Syuku&display=swap");
+
+  :root {
+    --background: #fff9fb;
+    --background-soft: #fff0f5;
+    --paper: rgba(255, 255, 255, 0.92);
+
+    --line: rgba(238, 143, 170, 0.36);
+
+    --sakura-light: #ffd7e2;
+    --sakura-deep: #df7397;
+    --sakura-strong: #ef86a9;
+
+    --text: #3a2630;
+    --muted: #82636e;
+    --muted-light: #a1848e;
+
+    --shadow: rgba(179, 92, 119, 0.14);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family:
+      "Kaisei Tokumin",
+      "Yu Mincho",
+      "Hiragino Mincho ProN",
+      "Noto Serif JP",
+      serif;
+    line-height: 1.8;
+    background:
+      radial-gradient(
+        circle at 10% 5%,
+        rgba(255, 201, 218, 0.72),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 90% 15%,
+        rgba(255, 225, 234, 0.88),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 50% 95%,
+        rgba(243, 169, 189, 0.38),
+        transparent 38%
+      ),
+      linear-gradient(
+        180deg,
+        var(--background) 0%,
+        var(--background-soft) 100%
+      );
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        rgba(238, 143, 170, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(238, 143, 170, 0.07) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+
+  body::after {
+    content: "♪";
+    position: fixed;
+    right: 4vw;
+    bottom: 1vh;
+    z-index: -1;
+    pointer-events: none;
+    color: rgba(239, 134, 169, 0.13);
+    font-family: serif;
+    font-size: clamp(100px, 18vw, 260px);
+    transform: rotate(-10deg);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 21px 5vw;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 249, 251, 0.88);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 32px rgba(238, 143, 170, 0.08);
+  }
+
+  .logo {
+    color: var(--sakura-deep);
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: 26px;
+    letter-spacing: 0.14em;
+  }
+
+  .nav {
+    display: flex;
+    gap: 24px;
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+
+  .nav a {
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .nav a:hover {
+    color: var(--sakura-deep);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 590px;
+    display: grid;
+    place-items: center;
+    padding: 100px 5vw 90px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(239, 134, 169, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 215, 226, 0.18);
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(223, 115, 151, 0.24);
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+  }
+
+  .hero-mark {
+    position: absolute;
+    color: rgba(239, 134, 169, 0.12);
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(190px, 30vw, 410px);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 930px;
+    text-align: center;
+  }
+
+  .hero-label,
+  .section-heading p,
+  .track-category,
+  .small-label {
+    margin: 0;
+    color: var(--sakura-deep);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+
+  h1 {
+    margin: 16px 0 24px;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(56px, 9vw, 110px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-description {
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 17px;
+  }
+
+  .hero-button,
+  .back-button,
+  .download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hero-button {
+    min-width: 180px;
+    margin-top: 34px;
+    padding: 13px 22px;
+    color: #ffffff;
+    border: 1px solid transparent;
+    background: linear-gradient(
+      135deg,
+      var(--sakura-strong),
+      var(--sakura-deep)
+    );
+    box-shadow: 0 14px 34px rgba(223, 115, 151, 0.24);
+  }
+
+  .hero-button:hover,
+  .download-button:hover,
+  .back-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .music-section {
+    width: min(1050px, 90vw);
+    margin: 0 auto;
+    padding: 100px 0 120px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 34px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-heading h2 {
+    margin: 4px 0 0;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+  }
+
+  .section-heading > span {
+    color: var(--muted-light);
+    font-size: 14px;
+  }
+
+  .track-list {
+    display: grid;
+    gap: 22px;
+  }
+
+  .track-card {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(28px, 5vw, 48px);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background:
+      linear-gradient(
+        125deg,
+        rgba(255, 210, 223, 0.72),
+        rgba(255, 255, 255, 0.94) 56%
+      );
+    box-shadow: 0 22px 64px var(--shadow);
+  }
+
+  .track-number {
+    position: absolute;
+    right: 28px;
+    bottom: -18px;
+    color: rgba(223, 115, 151, 0.08);
+    font-family: "Kaisei Tokumin", serif;
+    font-size: clamp(120px, 18vw, 210px);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .track-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .track-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .track-heading h3 {
+    margin: 7px 0 0;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+  }
+
+  .file-type {
+    flex-shrink: 0;
+    padding: 5px 14px;
+    border: 1px solid rgba(223, 115, 151, 0.34);
+    border-radius: 999px;
+    color: var(--sakura-deep);
+    background: rgba(255, 255, 255, 0.68);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  .track-description {
+    max-width: 720px;
+    margin: 18px 0 0;
+    color: var(--muted);
+  }
+
+  .file-name {
+    display: inline-block;
+    margin: 16px 0 0;
+    padding: 5px 12px;
+    border-radius: 8px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.62);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+
+  .player-area {
+    margin-top: 28px;
+  }
+
+  audio {
+    width: 100%;
+    display: block;
+  }
+
+  .track-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(238, 143, 170, 0.3);
+  }
+
+  .track-footer p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .track-footer strong {
+    margin-left: 8px;
+    color: var(--sakura-deep);
+  }
+
+  .download-button {
+    min-width: 170px;
+    padding: 12px 20px;
+    color: #ffffff;
+    border: 1px solid transparent;
+    background: linear-gradient(
+      135deg,
+      var(--sakura-strong),
+      var(--sakura-deep)
+    );
+    box-shadow: 0 12px 30px rgba(223, 115, 151, 0.2);
+  }
+
+  .usage-note {
+    margin-top: 50px;
+    padding: clamp(28px, 5vw, 48px);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 18px 54px rgba(179, 92, 119, 0.1);
+  }
+
+  .usage-note h2 {
+    margin: 8px 0 14px;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(30px, 5vw, 46px);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .usage-note > p:not(.small-label) {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .back-area {
+    margin-top: 42px;
+    text-align: center;
+  }
+
+  .back-button {
+    min-width: 190px;
+    padding: 13px 22px;
+    color: var(--sakura-deep);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 30px rgba(238, 143, 170, 0.12);
+  }
+
+  .back-button:hover {
+    border-color: var(--sakura-strong);
+    background: #ffffff;
+  }
+
+  .footer {
+    padding: 32px 5vw;
+    border-top: 1px solid var(--line);
+    color: var(--muted-light);
+    text-align: center;
+    background: rgba(255, 250, 251, 0.72);
+  }
+
+  .footer p {
+    margin: 0;
+  }
+
+  @media (max-width: 780px) {
+    .site-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .nav {
+      width: 100%;
+      gap: 18px;
+      padding-bottom: 4px;
+      overflow-x: auto;
+    }
+
+    .hero {
+      min-height: 500px;
+    }
+
+    .section-heading {
+      display: block;
+    }
+
+    .section-heading > span {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .track-footer {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .download-button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero {
+      min-height: 470px;
+      place-items: end start;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-description {
+      margin: 0;
+    }
+
+    .track-card {
+      border-radius: 24px;
+    }
+
+    .track-heading {
+      flex-direction: column;
+    }
+
+    .file-type {
+      order: -1;
+    }
+  }
+</style>
