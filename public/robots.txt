@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kamisirorin.pages.dev/sitemap-index.xml
