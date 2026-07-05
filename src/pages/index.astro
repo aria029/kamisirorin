@@ -16,6 +16,7 @@ const works = [
     type: "YOUTUBE PLAYLIST",
     text: "コマンドブロックを使ったマイクラ人狼の作り方を解説します。",
     link: "https://www.youtube.com/playlist?list=PLBWbh53oSCkQQ556JkkRrTRLRQ7LmqyVY",
+    linkLabel: "再生リストを見る",
     external: true,
   },
   {
@@ -23,7 +24,16 @@ const works = [
     type: "WORLD",
     text: "小説や漫画の舞台となる世界を考え、歴史・文化・用語・物語の背景を文章にまとめています。",
     link: "/world",
+    linkLabel: "詳しく見る",
     external: false,
+  },
+  {
+    title: "マイクラで作成したMOD・データパック等",
+    type: "MINECRAFT CONTENTS",
+    text: "Minecraft向けに作成したMOD、データパック、リソースパックなどを公開しています。クリックすると外部サイト「クラフターズコロニー」へ移動します。",
+    link: "https://minecraft-mcworld.com/author/540c51abf274498b78327bfaa471e1e4cd3e1945/",
+    linkLabel: "外部サイトで見る",
+    external: true,
   },
 ];
 
@@ -325,7 +335,7 @@ const youtubeVideos = [
                 <span>{work.text}</span>
 
                 <div class="work-card-footer">
-                  <span>{work.external ? "再生リストを見る" : "詳しく見る"}</span>
+                  <span>{work.linkLabel}</span>
                   <span aria-hidden="true">→</span>
                 </div>
               </a>
@@ -343,7 +353,12 @@ const youtubeVideos = [
         <div class="contact-card">
           <p>連絡や最新情報は、Xをご確認ください。</p>
 
-          <a class="button primary" href="https://x.com/" target="_blank">
+          <a
+            class="button primary"
+            href="https://x.com/kamisirorin_029"
+            target="_blank"
+            rel="noreferrer"
+          >
             Xを見る
           </a>
         </div>

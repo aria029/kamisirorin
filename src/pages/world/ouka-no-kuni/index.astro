@@ -1,0 +1,396 @@
+---
+const pageTitle = "桜花の国";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="description"
+      content="桜花の国の世界観・物語設定ページです。現在、内容を準備しています。"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{pageTitle} | 神白 凛</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="logo" href="/">神白 凛</a>
+
+      <nav class="nav">
+        <a href="/">ホーム</a>
+        <a href="/world">世界一覧</a>
+        <a href="/#works">作品集</a>
+        <a href="/#contact">コンタクト</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-decoration" aria-hidden="true">桜</div>
+
+        <div class="hero-content">
+          <p class="hero-label">OUKA NO KUNI</p>
+
+          <p class="reading">おうかのくに</p>
+
+          <h1>桜花の国</h1>
+
+          <p class="hero-description">
+            桜花の国の世界観・物語設定を掲載するページです。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <article class="preparing-card">
+          <p class="small-label">COMING SOON</p>
+
+          <h2>現在、内容を準備しています</h2>
+
+          <p>
+            桜花の国の歴史、文化、人物、用語、物語などの設定を順次掲載する予定です。
+          </p>
+
+          <div class="divider" aria-hidden="true">
+            <span>✿</span>
+          </div>
+
+          <a class="back-button" href="/world">
+            <span aria-hidden="true">←</span>
+            世界一覧へ戻る
+          </a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 神白 凛</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700;800&family=Yuji+Syuku&display=swap");
+
+  :root {
+    --background: #fff9fb;
+    --background-soft: #fff0f5;
+    --paper: rgba(255, 255, 255, 0.9);
+
+    --line: rgba(238, 143, 170, 0.36);
+
+    --sakura-light: #ffd7e2;
+    --sakura-deep: #df7397;
+    --sakura-strong: #ef86a9;
+
+    --text: #3a2630;
+    --muted: #82636e;
+    --muted-light: #a1848e;
+
+    --shadow: rgba(179, 92, 119, 0.14);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family:
+      "Kaisei Tokumin",
+      "Yu Mincho",
+      "Hiragino Mincho ProN",
+      "Noto Serif JP",
+      serif;
+    line-height: 1.9;
+    background:
+      radial-gradient(
+        circle at 12% 5%,
+        rgba(255, 199, 216, 0.72),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 88% 12%,
+        rgba(255, 227, 235, 0.88),
+        transparent 34%
+      ),
+      linear-gradient(
+        180deg,
+        var(--background) 0%,
+        var(--background-soft) 100%
+      );
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        rgba(238, 143, 170, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(238, 143, 170, 0.07) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 21px 5vw;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 249, 251, 0.88);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 32px rgba(238, 143, 170, 0.08);
+  }
+
+  .logo {
+    color: var(--sakura-deep);
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: 26px;
+    letter-spacing: 0.14em;
+  }
+
+  .nav {
+    display: flex;
+    gap: 24px;
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+
+  .nav a {
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .nav a:hover {
+    color: var(--sakura-deep);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 510px;
+    display: grid;
+    place-items: center;
+    padding: 100px 5vw 86px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(239, 134, 169, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 215, 226, 0.18);
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(223, 115, 151, 0.22);
+    transform: rotate(45deg);
+  }
+
+  .hero-decoration {
+    position: absolute;
+    color: rgba(239, 134, 169, 0.12);
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(180px, 28vw, 390px);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    text-align: center;
+  }
+
+  .hero-label,
+  .small-label {
+    margin: 0;
+    color: var(--sakura-deep);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+
+  .reading {
+    margin: 20px 0 -8px;
+    color: var(--sakura-deep);
+    font-size: 18px;
+    letter-spacing: 0.5em;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(66px, 12vw, 142px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-description {
+    margin: 24px 0 0;
+    color: var(--muted);
+    font-size: 17px;
+  }
+
+  .content-section {
+    width: min(900px, 90vw);
+    margin: 0 auto;
+    padding: 100px 0 120px;
+  }
+
+  .preparing-card {
+    padding: clamp(36px, 7vw, 76px);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 211, 223, 0.74),
+        rgba(255, 255, 255, 0.92) 54%
+      );
+    box-shadow: 0 26px 80px var(--shadow);
+    text-align: center;
+  }
+
+  .preparing-card h2 {
+    margin: 12px 0 22px;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(36px, 6vw, 62px);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+  }
+
+  .preparing-card > p:not(.small-label) {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--muted);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 36px 0;
+    color: var(--sakura-deep);
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .divider span {
+    font-size: 22px;
+  }
+
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 190px;
+    padding: 13px 22px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--sakura-deep);
+    background: rgba(255, 255, 255, 0.78);
+    font-weight: 700;
+    box-shadow: 0 12px 32px rgba(238, 143, 170, 0.12);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .back-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--sakura-strong);
+    background: #ffffff;
+  }
+
+  .footer {
+    padding: 32px 5vw;
+    border-top: 1px solid var(--line);
+    color: var(--muted-light);
+    text-align: center;
+    background: rgba(255, 250, 251, 0.72);
+  }
+
+  .footer p {
+    margin: 0;
+  }
+
+  @media (max-width: 780px) {
+    .site-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .nav {
+      width: 100%;
+      gap: 18px;
+      padding-bottom: 4px;
+      overflow-x: auto;
+    }
+
+    .hero {
+      min-height: 450px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero {
+      place-items: end start;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .reading {
+      font-size: 14px;
+    }
+
+    .preparing-card {
+      border-radius: 24px;
+    }
+  }
+</style>

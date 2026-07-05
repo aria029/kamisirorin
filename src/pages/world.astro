@@ -1,24 +1,22 @@
 ---
-const siteName = "神白 凛";
-
-const worldWorks = [
+const worlds = [
   {
-    category: "WORLD & STORY",
+    number: "01",
+    label: "WORLD & STORY",
     title: "ミスティリアルム・エレディア",
     reading: "",
     description:
       "世界の歴史・文化・用語・物語の背景を文章にまとめた世界観設定です。",
-    link: "/world/mystiriarum-eredia",
-    status: "設定公開準備中",
+    href: "/world/mystiriarum-eredia",
   },
   {
-    category: "WORLD & STORY",
+    number: "02",
+    label: "WORLD & STORY",
     title: "桜花の国",
     reading: "おうかのくに",
     description:
       "世界の歴史・文化・用語・物語の背景を文章にまとめた世界観設定です。",
-    link: "/world/ouka-no-kuni",
-    status: "設定公開準備中",
+    href: "/world/ouka-no-kuni",
   },
 ];
 ---
@@ -27,10 +25,12 @@ const worldWorks = [
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="description"
-      content="神白 凛が制作する、小説や漫画の舞台となる世界観・物語設定の作品一覧です。"
+      content="神白 凛が制作している世界観・物語設定の一覧です。"
     />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>世界観・物語設定 | 神白 凛</title>
@@ -38,11 +38,11 @@ const worldWorks = [
 
   <body>
     <header class="site-header">
-      <a class="logo" href="/">{siteName}</a>
+      <a class="logo" href="/">神白 凛</a>
 
-      <nav class="nav" aria-label="メインメニュー">
+      <nav class="nav">
+        <a href="/">ホーム</a>
         <a href="/#profile">プロフィール</a>
-        <a href="/#topics">トピック</a>
         <a href="/#youtube">YouTube</a>
         <a href="/#works">作品集</a>
         <a href="/#contact">コンタクト</a>
@@ -50,98 +50,66 @@ const worldWorks = [
     </header>
 
     <main>
-      <section class="world-hero">
-        <div class="hero-decoration" aria-hidden="true">界</div>
+      <section class="hero">
+        <div class="hero-mark" aria-hidden="true">世</div>
 
-        <div class="hero-inner">
-          <p class="hero-label">WORLD &amp; STORY</p>
+        <div class="hero-content">
+          <p class="hero-label">WORLD BUILDING</p>
 
           <h1>世界観・物語設定</h1>
 
-          <p class="hero-lead">
-            小説や漫画の舞台となる世界を考え、歴史・文化・用語・物語の背景を文章にまとめています。
+          <p class="hero-description">
+            小説や漫画の舞台となる世界を考え、歴史・文化・用語・物語の背景をまとめています。
           </p>
-
-          <div class="hero-actions">
-            <a class="button primary" href="#world-works">
-              作品一覧を見る
-            </a>
-
-            <a class="button" href="/#works">
-              トップの作品集へ戻る
-            </a>
-          </div>
         </div>
       </section>
 
-      <section class="section" id="world-works">
+      <section class="world-section">
         <div class="section-heading">
-          <p>WORLD WORKS</p>
-          <h2>作品一覧</h2>
+          <div>
+            <p>WORLD LIST</p>
+            <h2>世界一覧</h2>
+          </div>
+
+          <span>創作している世界の記録</span>
         </div>
 
-        <div class="works-introduction">
-          <p>
-            閲覧したい作品のタイトルを選択してください。
-            各作品のページでは、世界観の概要、設定資料、用語・設定メモなどを掲載します。
-          </p>
-        </div>
-
-        <div class="world-works-grid">
+        <div class="world-list">
           {
-            worldWorks.map((work, index) => (
-              <a class="world-work-card" href={work.link}>
-                <div class="world-work-number" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
+            worlds.map((world) => (
+              <a class="world-card" href={world.href}>
+                <div class="world-card-decoration" aria-hidden="true">
+                  ✿
                 </div>
 
-                <div class="world-work-top">
-                  <p>{work.category}</p>
-                  <span>{work.status}</span>
+                <div class="world-card-number" aria-hidden="true">
+                  {world.number}
                 </div>
 
-                <div class="world-work-content">
-                  <h3>
-                    {
-                      work.reading ? (
-                        <ruby>
-                          {work.title}
-                          <rt>{work.reading}</rt>
-                        </ruby>
-                      ) : (
-                        work.title
-                      )
-                    }
-                  </h3>
+                <div class="world-card-content">
+                  <p class="world-label">{world.label}</p>
 
-                  <p>{work.description}</p>
-                </div>
+                  {
+                    world.reading ? (
+                      <div class="world-title-area">
+                        <p class="world-reading">{world.reading}</p>
+                        <h3>{world.title}</h3>
+                      </div>
+                    ) : (
+                      <h3>{world.title}</h3>
+                    )
+                  }
 
-                <div class="world-work-footer">
-                  <span>世界観・物語設定を見る</span>
-                  <span aria-hidden="true">→</span>
+                  <p class="world-description">{world.description}</p>
+
+                  <div class="world-card-footer">
+                    <span>世界観・物語設定を見る</span>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
                 </div>
               </a>
             ))
           }
-        </div>
-      </section>
-
-      <section class="section return-section">
-        <div class="return-card">
-          <div>
-            <p class="small-label">BACK TO PORTFOLIO</p>
-
-            <h2>ほかの活動・作品を見る</h2>
-
-            <p>
-              YouTubeでの活動や、そのほかの制作物はトップページから確認できます。
-            </p>
-          </div>
-
-          <a class="button primary" href="/#works">
-            作品集へ戻る
-          </a>
         </div>
       </section>
     </main>
@@ -156,20 +124,20 @@ const worldWorks = [
   @import url("https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700;800&family=Yuji+Syuku&display=swap");
 
   :root {
-    --bg: #fffafb;
-    --bg-soft: #fff1f5;
-    --paper: #ffffff;
+    --background: #fff9fb;
+    --background-soft: #fff0f5;
+    --paper: rgba(255, 255, 255, 0.9);
 
-    --line: rgba(238, 143, 170, 0.34);
+    --line: rgba(238, 143, 170, 0.36);
 
     --sakura: #f3a9bd;
-    --sakura-soft: #ffd6e1;
-    --sakura-deep: #dd6f94;
-    --sakura-strong: #f08aaa;
+    --sakura-light: #ffd7e2;
+    --sakura-deep: #df7397;
+    --sakura-strong: #ef86a9;
 
     --text: #3a2630;
-    --muted: #7b5c68;
-    --muted-light: #9b7d88;
+    --muted: #82636e;
+    --muted-light: #a1848e;
 
     --shadow: rgba(179, 92, 119, 0.14);
   }
@@ -184,35 +152,29 @@ const worldWorks = [
 
   body {
     margin: 0;
+    color: var(--text);
     font-family:
       "Kaisei Tokumin",
       "Yu Mincho",
       "Hiragino Mincho ProN",
       "Noto Serif JP",
       serif;
-    color: var(--text);
     line-height: 1.8;
     background:
       radial-gradient(
-        circle at 18% 8%,
-        rgba(255, 198, 214, 0.72),
-        transparent 34%
-      ),
-      radial-gradient(
-        circle at 82% 4%,
-        rgba(255, 224, 233, 0.85),
+        circle at 8% 5%,
+        rgba(255, 203, 218, 0.7),
         transparent 30%
       ),
       radial-gradient(
-        circle at 50% 92%,
-        rgba(243, 169, 189, 0.42),
-        transparent 38%
+        circle at 92% 18%,
+        rgba(255, 225, 234, 0.85),
+        transparent 34%
       ),
       linear-gradient(
         180deg,
-        #fffafb 0%,
-        #fff4f7 48%,
-        #fffefe 100%
+        var(--background) 0%,
+        var(--background-soft) 100%
       );
   }
 
@@ -224,48 +186,31 @@ const worldWorks = [
     pointer-events: none;
     background-image:
       linear-gradient(
-        rgba(238, 143, 170, 0.08) 1px,
+        rgba(238, 143, 170, 0.07) 1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        rgba(238, 143, 170, 0.08) 1px,
+        rgba(238, 143, 170, 0.07) 1px,
         transparent 1px
       );
     background-size: 48px 48px;
-    mask-image: linear-gradient(
-      to bottom,
-      black,
-      transparent 82%
-    );
   }
 
   body::after {
-    content: "✿ ✦ ✿";
+    content: "✦";
     position: fixed;
-    right: 5vw;
-    bottom: 4vh;
+    right: -28px;
+    bottom: 40px;
     z-index: -1;
     pointer-events: none;
-    color: rgba(240, 138, 170, 0.18);
-    font-size: clamp(48px, 9vw, 120px);
-    letter-spacing: 0.12em;
-    transform: rotate(-8deg);
+    color: rgba(239, 134, 169, 0.16);
+    font-size: 130px;
   }
 
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  ruby {
-    ruby-position: over;
-  }
-
-  rt {
-    color: var(--sakura-deep);
-    font-size: 0.42em;
-    letter-spacing: 0.12em;
   }
 
   .site-header {
@@ -275,33 +220,30 @@ const worldWorks = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 5vw;
+    gap: 24px;
+    padding: 21px 5vw;
     border-bottom: 1px solid var(--line);
-    background: rgba(255, 250, 251, 0.88);
-    box-shadow: 0 10px 30px rgba(238, 143, 170, 0.08);
+    background: rgba(255, 249, 251, 0.88);
     backdrop-filter: blur(14px);
+    box-shadow: 0 10px 32px rgba(238, 143, 170, 0.08);
   }
 
   .logo {
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
     color: var(--sakura-deep);
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
     font-size: 26px;
-    font-weight: 400;
     letter-spacing: 0.14em;
   }
 
   .nav {
     display: flex;
     gap: 24px;
+    color: var(--muted);
     font-size: 14px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
   }
 
   .nav a {
-    color: var(--muted);
     white-space: nowrap;
     transition: color 0.2s ease;
   }
@@ -310,346 +252,211 @@ const worldWorks = [
     color: var(--sakura-deep);
   }
 
-  main {
-    overflow: hidden;
-  }
-
-  .world-hero {
+  .hero {
     position: relative;
-    min-height: 74vh;
+    min-height: 480px;
     display: grid;
     place-items: center;
+    padding: 90px 5vw 80px;
     overflow: hidden;
-    padding: 110px 5vw 90px;
     border-bottom: 1px solid var(--line);
   }
 
-  .world-hero::before {
+  .hero::before {
     content: "";
     position: absolute;
-    width: min(680px, 74vw);
-    aspect-ratio: 1;
-    border: 1px solid rgba(240, 138, 170, 0.28);
-    border-radius: 50%;
-    background: rgba(255, 214, 225, 0.16);
-    transform: rotate(18deg);
+    width: 480px;
+    height: 480px;
+    border: 1px solid rgba(239, 134, 169, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 215, 226, 0.18);
   }
 
-  .world-hero::after {
-    content: "";
+  .hero-mark {
     position: absolute;
-    width: min(390px, 46vw);
-    aspect-ratio: 1;
-    border: 1px solid rgba(221, 111, 148, 0.26);
-    background: rgba(255, 255, 255, 0.26);
-    transform: rotate(45deg);
-  }
-
-  .hero-decoration {
-    position: absolute;
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
-    color: rgba(240, 138, 170, 0.12);
-    font-size: clamp(190px, 32vw, 430px);
+    color: rgba(239, 134, 169, 0.12);
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(190px, 28vw, 390px);
     line-height: 1;
     user-select: none;
   }
 
-  .hero-inner {
+  .hero-content {
     position: relative;
     z-index: 1;
-    width: min(900px, 90vw);
+    max-width: 900px;
     text-align: center;
   }
 
   .hero-label,
-  .section-heading > p,
-  .small-label {
+  .section-heading p,
+  .world-label {
     margin: 0;
     color: var(--sakura-deep);
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
   }
 
   h1 {
-    margin: 20px 0 24px;
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
-    font-size: clamp(56px, 10vw, 118px);
+    margin: 16px 0 20px;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(54px, 9vw, 112px);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: 0.08em;
-    text-shadow: 0 8px 34px rgba(240, 138, 170, 0.18);
   }
 
-  .hero-lead {
-    max-width: 760px;
+  .hero-description {
+    max-width: 720px;
     margin: 0 auto;
     color: var(--muted);
-    font-size: 18px;
+    font-size: 17px;
   }
 
-  .hero-actions {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-  }
-
-  .button {
-    min-width: 150px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 22px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--sakura-deep);
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 12px 32px rgba(238, 143, 170, 0.12);
-    font-weight: 700;
-    transition:
-      transform 0.2s ease,
-      border-color 0.2s ease,
-      background 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-
-  .button:hover {
-    transform: translateY(-2px);
-    border-color: var(--sakura-strong);
-    background: #ffffff;
-    box-shadow: 0 16px 40px rgba(238, 143, 170, 0.2);
-  }
-
-  .button.primary {
-    color: #ffffff;
-    border-color: transparent;
-    background: linear-gradient(
-      135deg,
-      var(--sakura-strong),
-      var(--sakura-deep)
-    );
-  }
-
-  .section {
+  .world-section {
     width: min(1100px, 90vw);
     margin: 0 auto;
-    padding: 110px 0;
+    padding: 100px 0 120px;
   }
 
   .section-heading {
     display: flex;
     align-items: end;
     justify-content: space-between;
-    gap: 24px;
+    gap: 30px;
     margin-bottom: 34px;
-    padding-bottom: 18px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--line);
   }
 
   .section-heading h2 {
-    margin: 0;
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
-    font-size: clamp(40px, 6vw, 76px);
+    margin: 4px 0 0;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(40px, 6vw, 72px);
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.1;
     letter-spacing: 0.08em;
   }
 
-  .works-introduction {
-    margin-bottom: 28px;
-    padding: 20px 24px;
-    border: 1px solid rgba(221, 111, 148, 0.24);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.66);
+  .section-heading > span {
+    color: var(--muted-light);
+    font-size: 14px;
   }
 
-  .works-introduction p {
-    margin: 0;
-    color: var(--muted);
-  }
-
-  .world-works-grid {
+  .world-list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .world-work-card {
+  .world-card {
     position: relative;
     min-height: 360px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    display: block;
     overflow: hidden;
     padding: 30px;
     border: 1px solid var(--line);
     border-radius: 28px;
     background:
       linear-gradient(
-        145deg,
-        rgba(255, 198, 214, 0.74),
-        transparent 48%
-      ),
-      rgba(255, 255, 255, 0.92);
-    box-shadow: 0 22px 60px rgba(238, 143, 170, 0.12);
+        115deg,
+        rgba(255, 210, 222, 0.78),
+        rgba(255, 255, 255, 0.93) 54%
+      );
+    box-shadow: 0 22px 64px var(--shadow);
     transition:
-      transform 0.2s ease,
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
   }
 
-  .world-work-card::before {
-    content: "✿";
+  .world-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(223, 115, 151, 0.58);
+    box-shadow: 0 30px 76px rgba(179, 92, 119, 0.22);
+  }
+
+  .world-card-decoration {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    color: rgba(221, 111, 148, 0.24);
-    font-size: 72px;
+    top: 34px;
+    right: 34px;
+    color: rgba(223, 115, 151, 0.24);
+    font-size: 58px;
     line-height: 1;
   }
 
-  .world-work-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(221, 111, 148, 0.52);
-    box-shadow: 0 30px 76px rgba(238, 143, 170, 0.22);
-  }
-
-  .world-work-number {
+  .world-card-number {
     position: absolute;
-    right: 24px;
-    bottom: 58px;
-    color: rgba(221, 111, 148, 0.08);
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
-    font-size: clamp(100px, 15vw, 180px);
-    line-height: 0.7;
-    pointer-events: none;
+    right: 44px;
+    bottom: 18px;
+    color: rgba(223, 115, 151, 0.08);
+    font-family: "Kaisei Tokumin", serif;
+    font-size: clamp(130px, 18vw, 210px);
+    font-weight: 400;
+    line-height: 1;
+    user-select: none;
   }
 
-  .world-work-top {
-    position: absolute;
-    top: 26px;
-    left: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-  }
-
-  .world-work-top p {
-    margin: 0;
-    color: var(--sakura-deep);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-  }
-
-  .world-work-top span {
-    padding: 3px 10px;
-    border: 1px solid rgba(221, 111, 148, 0.28);
-    border-radius: 999px;
-    color: var(--sakura-deep);
-    background: rgba(255, 255, 255, 0.7);
-    font-size: 11px;
-  }
-
-  .world-work-content {
+  .world-card-content {
     position: relative;
     z-index: 1;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
   }
 
-  .world-work-content h3 {
-    margin: 0 0 20px;
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
-    font-size: clamp(38px, 5vw, 58px);
+  .world-card h3 {
+    max-width: 830px;
+    margin: auto 0 16px;
+    font-family: "Yuji Syuku", "Kaisei Tokumin", serif;
+    font-size: clamp(42px, 6vw, 70px);
     font-weight: 400;
-    line-height: 1.35;
+    line-height: 1.25;
     letter-spacing: 0.08em;
   }
 
-  .world-work-content p {
-    max-width: 720px;
+  .world-title-area {
+    margin-top: auto;
+  }
+
+  .world-title-area h3 {
+    margin-top: 0;
+  }
+
+  .world-reading {
+    margin: 0 0 -2px;
+    color: var(--sakura-deep);
+    font-size: 18px;
+    letter-spacing: 0.5em;
+  }
+
+  .world-description {
+    max-width: 760px;
     margin: 0;
     color: var(--muted);
   }
 
-  .world-work-footer {
-    position: relative;
-    z-index: 1;
+  .world-card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
+    gap: 20px;
     margin-top: 30px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(238, 143, 170, 0.26);
+    padding-top: 18px;
+    border-top: 1px solid rgba(238, 143, 170, 0.3);
     color: var(--sakura-deep);
     font-size: 14px;
     font-weight: 700;
   }
 
-  .world-work-footer span:last-child {
-    font-size: 22px;
+  .arrow {
+    font-size: 24px;
     transition: transform 0.2s ease;
   }
 
-  .world-work-card:hover .world-work-footer span:last-child {
+  .world-card:hover .arrow {
     transform: translateX(5px);
-  }
-
-  .return-section {
-    padding-top: 40px;
-  }
-
-  .return-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-    padding: clamp(30px, 5vw, 54px);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255, 214, 225, 0.72),
-        transparent 46%
-      ),
-      rgba(255, 255, 255, 0.88);
-    box-shadow: 0 24px 80px var(--shadow);
-  }
-
-  .return-card h2 {
-    margin: 10px 0 18px;
-    font-family:
-      "Yuji Syuku",
-      "Kaisei Tokumin",
-      serif;
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 400;
-    line-height: 1.4;
-  }
-
-  .return-card p {
-    margin-bottom: 0;
-    color: var(--muted);
   }
 
   .footer {
@@ -657,94 +464,84 @@ const worldWorks = [
     border-top: 1px solid var(--line);
     color: var(--muted-light);
     text-align: center;
-    background: rgba(255, 250, 251, 0.7);
+    background: rgba(255, 250, 251, 0.72);
   }
 
-  @media (max-width: 860px) {
+  .footer p {
+    margin: 0;
+  }
+
+  @media (max-width: 780px) {
     .site-header {
       align-items: flex-start;
       flex-direction: column;
-      gap: 16px;
     }
 
     .nav {
       width: 100%;
       gap: 18px;
-      overflow-x: auto;
       padding-bottom: 4px;
+      overflow-x: auto;
     }
 
-    .world-hero {
-      min-height: 68vh;
-      place-items: end start;
-    }
-
-    .hero-inner {
-      text-align: left;
-    }
-
-    .hero-actions {
-      justify-content: flex-start;
+    .hero {
+      min-height: 410px;
     }
 
     .section-heading {
       display: block;
     }
 
-    .section-heading h2 {
-      margin-top: 8px;
+    .section-heading > span {
+      display: block;
+      margin-top: 10px;
     }
 
-    .return-card {
-      align-items: flex-start;
-      flex-direction: column;
+    .world-card {
+      min-height: 330px;
+      padding: 26px;
+    }
+
+    .world-card-content {
+      min-height: 276px;
+    }
+
+    .world-card-decoration {
+      top: 24px;
+      right: 24px;
+      font-size: 48px;
+    }
+
+    .world-card-number {
+      right: 24px;
     }
   }
 
   @media (max-width: 520px) {
-    .section {
-      width: min(92vw, 1100px);
-      padding: 82px 0;
+    .hero {
+      place-items: end start;
+      text-align: left;
     }
 
-    h1 {
-      font-size: clamp(48px, 15vw, 74px);
+    .hero-content {
+      text-align: left;
     }
 
-    .world-work-card {
-      min-height: 330px;
-      padding: 26px 22px;
-      border-radius: 22px;
+    .hero-description {
+      margin: 0;
     }
 
-    .world-work-top {
-      top: 22px;
-      left: 22px;
-      right: 22px;
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 8px;
+    .world-card {
+      min-height: 310px;
+      border-radius: 24px;
     }
 
-    .world-work-card::before {
-      top: 24px;
-      right: 22px;
-      font-size: 58px;
-    }
-
-    .world-work-content h3 {
+    .world-card h3 {
       font-size: 38px;
     }
 
-    .world-work-number {
-      right: 14px;
-      bottom: 64px;
-      font-size: 110px;
-    }
-
-    .return-card {
-      padding: 26px 22px;
-      border-radius: 22px;
+    .world-reading {
+      font-size: 14px;
     }
   }
 </style>
