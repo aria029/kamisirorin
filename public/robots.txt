@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kamisirorin.pages.dev/sitemap-index.xml
+Sitemap: https://kamisirorin.pages.dev/sitemap-0.xml
